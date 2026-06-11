@@ -1,0 +1,90 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ShinrasBetterBestiary.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+        Width="1280" Height="720"
+        x:Class="ShinrasBetterBestiary.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Shinra's Better Bestiary">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Header -->
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0, 0, 0, 2">
+            <Grid ColumnDefinitions="*, *">
+                <!-- Logo -->
+                <Border Grid.Column="0"
+                        Padding="5"
+                        Background="{DynamicResource HeaderBackgroundColor}"
+                        BorderBrush="Black" BorderThickness="0, 0, 1, 0">
+                    <TextBlock Text="Bestiary"
+                               FontSize="56"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom" />
+                </Border>
+                <!-- Controls -->
+                <Border Grid.Column="1"
+                        Padding="5"
+                        Background="{DynamicResource HeaderBackgroundColor}"
+                        BorderBrush="Black" BorderThickness="1, 0, 0, 0">
+                    <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" VerticalAlignment="Center" Margin="5">
+                        <Button Classes="Filters" Grid.Row="0" Grid.Column="0" Content="Hide Oversouled" />
+                        <Button Classes="Filters" Grid.Row="0" Grid.Column="1" Content="Show Blue Bullet" />
+                        <Button Classes="Filters" Grid.Row="1" Grid.Column="1" Content="Oversoul Mark Mode" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="{DynamicResource PrimaryBackgroundColor}">
+            <SelectableTextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="Sorry if I Made Me Your Type"
+                Cursor="Hand" />
+        </Border>
+
+        <Border Grid.Row="2"
+                BorderBrush="Black"
+                BorderThickness="0,2,0,0"
+                Padding="10">
+
+            <Grid ColumnDefinitions="*,Auto,*">
+
+                <TextBlock Grid.Column="0"
+                           Text="Via Infinito Floors Remaining: 2-5, 10-20"
+                           VerticalAlignment="Center" />
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="5"
+                            VerticalAlignment="Center">
+
+                    <Button Content="⬅️" />
+
+                    <TextBlock Text="(5 of 8)"
+                               VerticalAlignment="Center" />
+
+                    <Button Content="➡️" />
+
+                </StackPanel>
+
+                <TextBlock Grid.Column="2"
+                           Text="Remaining: 5 (4 BB)"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center" />
+
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</Window>

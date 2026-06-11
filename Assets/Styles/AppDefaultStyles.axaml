@@ -1,0 +1,30 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradientColor}">
+            <!-- Add Controls for Previewer Here -->
+            <Button Content="Hello World" Classes="Filters" />
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Button.Filters">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundComponentColor}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button.Filters:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="Foreground" Value="Chartreuse" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+</Styles>

@@ -1,0 +1,24 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ShinrasBetterBestiary.App"
+             xmlns:local="using:ShinrasBetterBestiary"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Assets/Styles/AppDefaultStyles.axaml" />
+    </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryForegroundColor">#C3C3C3</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryBackgroundComponentColor">#414141</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryBackgroundColor">#2C2C2C</SolidColorBrush>
+
+        <SolidColorBrush x:Key="HeaderBackgroundColor">#4F4F4F</SolidColorBrush>
+    </Application.Resources>
+</Application>
