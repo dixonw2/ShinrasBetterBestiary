@@ -30,6 +30,7 @@
                                VerticalAlignment="Bottom" />
                 </Border>
                 <!-- Controls -->
+                <!-- Move these down to the main content on the left or right as a panel? -->
                 <Border Grid.Column="1"
                         Padding="5"
                         Background="{DynamicResource HeaderBackgroundColor}"
@@ -43,6 +44,11 @@
             </Grid>
         </Border>
 
+        <!-- Make into a Grid of *, *, Auto (or Auto, *, *)?
+             That way header is just logo/credits/something else
+             And there's not such an awkwardly huge space for each fiend's name
+             Could simply add more info on the screen the bigger it is? 
+             Like blue bullet, via infinito floors, etc. -->
         <Border Grid.Row="1"
                 Background="{DynamicResource PrimaryBackgroundColor}">
             <SelectableTextBlock
@@ -59,6 +65,7 @@
 
             <Grid ColumnDefinitions="*,Auto,*">
 
+                <!-- Make Button to show table showing remaining to be oversouled, ordered by floor -->
                 <TextBlock Grid.Column="0"
                            Text="Via Infinito Floors Remaining: 2-5, 10-20"
                            VerticalAlignment="Center" />
@@ -67,14 +74,10 @@
                             Orientation="Horizontal"
                             Spacing="5"
                             VerticalAlignment="Center">
-
                     <Button Content="⬅️" />
-
                     <TextBlock Text="(5 of 8)"
                                VerticalAlignment="Center" />
-
                     <Button Content="➡️" />
-
                 </StackPanel>
 
                 <TextBlock Grid.Column="2"
