@@ -24,10 +24,21 @@
                         Padding="5"
                         Background="{DynamicResource HeaderBackgroundColor}"
                         BorderBrush="Black" BorderThickness="0, 0, 1, 0">
-                    <TextBlock Text="Bestiary"
-                               FontSize="56"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom" />
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Bestiary"
+                            FontSize="56"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{Binding BestiaryEntries.Count, StringFormat='Loaded: {0}'}"
+                            FontSize="14"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right" />
+                    </Grid>
                 </Border>
                 <!-- Controls -->
                 <!-- Move these down to the main content on the left or right as a panel? -->
@@ -37,8 +48,10 @@
                         BorderBrush="Black" BorderThickness="1, 0, 0, 0">
                     <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" VerticalAlignment="Center" Margin="5">
                         <Button Classes="Filters" Grid.Row="0" Grid.Column="0" Content="Hide Oversouled" />
-                        <Button Classes="Filters" Grid.Row="0" Grid.Column="1" Content="Show Blue Bullet" />
-                        <Button Classes="Filters" Grid.Row="1" Grid.Column="1" Content="Oversoul Mark Mode" />
+                        <Button Classes="Filters" Grid.Row="0" Grid.Column="1" Content="Show Blue Bullet"
+                                Command="{Binding ClearOversouledCommand}" />
+                        <Button Classes="Filters" Grid.Row="1" Grid.Column="1" Content="Oversoul Mark Mode"
+                                Command="{Binding ChangeTestCommand}" />
                     </Grid>
                 </Border>
             </Grid>
@@ -75,15 +88,21 @@
                             Spacing="5"
                             VerticalAlignment="Center">
                     <Button Content="⬅️" />
-                    <TextBlock Text="(5 of 8)"
-                               VerticalAlignment="Center" />
+                    <TextBlock Text="(5 of 8)" VerticalAlignment="Center" />
+
                     <Button Content="➡️" />
                 </StackPanel>
 
                 <TextBlock Grid.Column="2"
-                           Text="Remaining: 5 (4 BB)"
                            HorizontalAlignment="Right"
-                           VerticalAlignment="Center" />
+                           VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} of {1}">
+                            <Binding Path="OversouledCount" />
+                            <Binding Path="BestiaryEntries.Count" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
 
             </Grid>
         </Border>

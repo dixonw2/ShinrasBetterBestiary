@@ -1,15 +1,13 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
+using ShinrasBetterBestiary.Repositories;
 using ShinrasBetterBestiary.ViewModels;
 using ShinrasBetterBestiary.Views;
 
 namespace ShinrasBetterBestiary;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {
@@ -20,9 +18,12 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            IBestiaryRepository bestRepo = new BestiaryRepository();
+            IUserBestiaryRepository userRepo = new UserBestiaryRepository();
+
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = new MainWindowViewModel(bestRepo, userRepo)
             };
         }
 
