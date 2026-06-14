@@ -1,22 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ShinrasBetterBestiary.Models;
 
 public partial class FiendBestiaryEntryModel : ObservableObject
 {
-    public int Page { get; }
-    public int BestiaryIndex { get; }
-    public int EncounterIndex { get; }
-    public string Name { get; }
-    public int Chapter { get; }
-    public string Location { get; }
-    public int ViaInfinitoFloorMin { get; }
-    public int ViaInfinitoFloorMax { get; }
-    public string Comment { get; }
-    public string BlueBullet { get; }
-
-    [ObservableProperty]
-    private bool oversouled;
+    [ObservableProperty] private bool _oversouled;
 
     public FiendBestiaryEntryModel(
         int page,
@@ -28,7 +17,7 @@ public partial class FiendBestiaryEntryModel : ObservableObject
         int viaInfinitoFloorMin,
         int viaInfinitoFloorMax,
         string comment,
-        string blueBullet,
+        ICollection<string> blueBullet,
         bool oversouled = false)
     {
         Page = page;
@@ -42,6 +31,17 @@ public partial class FiendBestiaryEntryModel : ObservableObject
         Comment = comment;
         BlueBullet = blueBullet;
 
-        this.oversouled = oversouled;
+        _oversouled = oversouled;
     }
+
+    public int Page { get; }
+    public int BestiaryIndex { get; }
+    public int EncounterIndex { get; }
+    public string Name { get; }
+    public int Chapter { get; }
+    public string Location { get; }
+    public int ViaInfinitoFloorMin { get; }
+    public int ViaInfinitoFloorMax { get; }
+    public string Comment { get; }
+    public ICollection<string> BlueBullet { get; }
 }
