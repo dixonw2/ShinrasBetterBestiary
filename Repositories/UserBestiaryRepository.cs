@@ -37,6 +37,11 @@ public class UserBestiaryRepository : IUserBestiaryRepository
 
     public void SaveOversouled(IReadOnlySet<int> ids)
     {
+        if (ids.SetEquals(LoadOversouledIds()))
+        {
+            return;
+        }
+
         var json = JsonSerializer.Serialize(new UserBestiarySave { OversouledIds = ids.ToArray() },
             JsonSerializerOptions);
         File.WriteAllText(UserBestiaryPath, json);
@@ -45,5 +50,5 @@ public class UserBestiaryRepository : IUserBestiaryRepository
 
 internal class UserBestiarySave
 {
-    public int[] OversouledIds { get; set; } = [];
+    public int[] OversouledIds { get; init; } = [];
 }

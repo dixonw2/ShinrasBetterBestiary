@@ -16,30 +16,23 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     <Grid RowDefinitions="Auto, *, Auto">
+
         <!-- Header -->
         <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0, 0, 0, 2">
             <Grid ColumnDefinitions="*, *">
+
                 <!-- Logo -->
                 <Border Grid.Column="0"
                         Padding="5"
                         Background="{DynamicResource HeaderBackgroundColor}"
                         BorderBrush="Black" BorderThickness="0, 0, 1, 0">
-                    <Grid ColumnDefinitions="*, Auto">
-                        <TextBlock
-                            Grid.Column="0"
-                            Text="Bestiary"
-                            FontSize="56"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Left" />
-
-                        <TextBlock
-                            Grid.Column="1"
-                            Text="{Binding BestiaryEntries.Count, StringFormat='Loaded: {0}'}"
-                            FontSize="14"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Right" />
-                    </Grid>
+                    <TextBlock
+                        Text="Bestiary"
+                        FontSize="56"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left" />
                 </Border>
+
                 <!-- Controls -->
                 <!-- Move these down to the main content on the left or right as a panel? -->
                 <Border Grid.Column="1"
@@ -79,9 +72,10 @@
             <Grid ColumnDefinitions="*,Auto,*">
 
                 <!-- Make Button to show table showing remaining to be oversouled, ordered by floor -->
-                <TextBlock Grid.Column="0"
-                           Text="Via Infinito Floors Remaining: 2-5, 10-20"
-                           VerticalAlignment="Center" />
+                <SelectableTextBlock Grid.Column="0"
+                                     Text="{Binding ViaInfinitoText}"
+                                     VerticalAlignment="Center"
+                                     TextWrapping="Wrap" />
 
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
